@@ -4,7 +4,6 @@ import os
 # postgres_local_base = os.environ['DATABASE_URL']
 postgres_local_base = 'postgresql://127.0.0.1:5432/calcumon_users'
 
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
