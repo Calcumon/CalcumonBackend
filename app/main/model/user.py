@@ -12,13 +12,14 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # TODO: Make email optional
     # TODO: Add current level
-    email = db.Column(db.String(255), unique=True, nullable=False)
+    email = db.Column(db.String(255), unique=True)
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
     public_id = db.Column(db.String(100), unique=True)
     # TODO:  Accept phone numbers for mobile version??
-    username = db.Column(db.String(50), unique=True)
+    username = db.Column(db.String(50), unique=True, nullable=False)
     password_hash = db.Column(db.String(100))
+    level = db.Column(db.Integer)
 
     # For dashboard only pass lvl and user name
 

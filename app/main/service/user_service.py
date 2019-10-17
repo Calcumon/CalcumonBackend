@@ -13,7 +13,8 @@ def save_new_user(data):
             email=data['email'],
             username=data['username'],
             password=data['password'],
-            registered_on=datetime.datetime.utcnow()
+            registered_on=datetime.datetime.utcnow(),
+            level = 1
         )
         save_changes(new_user)
         # response_object = {
