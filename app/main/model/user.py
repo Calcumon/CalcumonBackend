@@ -10,6 +10,8 @@ class User(db.Model):
     __tablename__ = "user"
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    # TODO: Make email optional
+    # TODO: Add current level
     email = db.Column(db.String(255), unique=True, nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
@@ -17,6 +19,8 @@ class User(db.Model):
     # TODO:  Accept phone numbers for mobile version??
     username = db.Column(db.String(50), unique=True)
     password_hash = db.Column(db.String(100))
+
+    # For dashboard only pass lvl and user name
 
     @property
     def password(self):
