@@ -1,14 +1,17 @@
 from .. import db, flask_bcrypt
+import datetime
+import jwt
+from app.main.model.blacklist import BlacklistToken
+from ..config import key
 
 class User(db.Model):
     """ User Model for storing user related details """
     __tablename__ = "user"
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    # email = db.Column(db.String(255), unique=True, nullable=False)
+    id = db.Column(db.String(100), unique=True)
+    email = db.Column(db.String(255), unique=True, nullable=True)
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
-    # public_id = db.Column(db.String(100), unique=True)
+    public_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     # TODO:  Accept phone numbers for mobile version??
     username = db.Column(db.String(50), unique=True)
     password_hash = db.Column(db.String(100))
@@ -26,3 +29,41 @@ class User(db.Model):
 
     def __repr__(self):
         return "<User '{}'>".format(self.username)
+
+    def encode_auth_token(self, user_id):
+      """
+      Generates the Auth Token
+      :returns: string
+      """
+      try:
+        payload = {
+          'exp':datetime.datetime.utcnow() + datetime.timedelta(days=1, seconds=5),
+          'iat': datetime.datetime.utcnow(),
+          'sub': user_id
+        }
+        return jwt.encode(
+          payload,
+          key,
+          algorithm='HS256'
+        )
+      except Exception as e:
+        return e
+
+    def decode_auth_token(auth_token):
+      """
+      Decodes the auth token
+      :param auth_token
+      :return: interger|string
+      """
+      try:
+        payload = jwt.decode(auth_token, key)
+        is_blacklisted = BlacklistToken.check_blacklist(auth_token)
+        if is_blacklisted:
+          return 'Token Blacklisted. Please log in again'
+
+        else:
+                return payload['sub']
+      except jwt.ExpiredSignatureError:
+          return 'Signature expired. Please log in again.'
+      except jwt.InvalidTokenError:
+          return 'Invalid token. Please log in again.'

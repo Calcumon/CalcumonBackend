@@ -33,6 +33,7 @@ class User(Resource):
     @api.marshal_with(_user)
     def get(self, public_id):
         """get a user given its identifier"""
+        print(public_id)
         user = get_a_user(public_id)
         if not user:
             api.abort(404)
