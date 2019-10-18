@@ -22,12 +22,7 @@ jsonschema==3.1.1
 Mako==1.1.0
 MarkupSafe==1.1.1
 more-itertools==7.2.0
-<<<<<<< HEAD
 psycopg2-binary==2.8.3
-=======
-numpy==1.17.2
-psycopg2==2.8.3
->>>>>>> 3dcafd2eb0e4d0b59321d5a1ba22ee1a34319af5
 pycparser==2.19
 PyJWT==1.7.1
 pymongo==3.9.0
