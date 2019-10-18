@@ -7,29 +7,77 @@ from app.main.model.user import User
 
 def save_new_user(data):
     user = User.query.filter_by(username=data['username']).first()
-    # print(data)
     if not user:
-        new_user = User(
-            public_id=str(uuid.uuid4()),
-            email=data['email'],
-            username=data['username'],
-            password=data['password'],
-            registered_on=datetime.datetime.utcnow(),
-            level = 1
-        )
-        save_changes(new_user)
-        # response_object = {
-        #     'status': 'success',
-        #     'message': 'Successfully registered.'
-        # }
-        # return response_object, 201
-        return generate_token(new_user)
+      if 'email' in data:
+            new_user = User(
+                public_id=str(uuid.uuid4()),
+                email=data['email'],
+                username=data['username'],
+                password=data['password'],
+                registered_on=datetime.datetime.utcnow(),
+                level = 1
+            )
+            save_changes(new_user)
+            return generate_token(new_user)
+      else:
+            new_user = User(
+                public_id=str(uuid.uuid4()),
+                email=None,
+                username=data['username'],
+                password=data['password'],
+                registered_on=datetime.datetime.utcnow(),
+                level = 1
+            )
+            save_changes(new_user)
+            return generate_token(new_user)
     else:
         response_object = {
             'status': 'fail',
             'message': 'User already exists. Please Log in.',
         }
         return response_object, 409
+
+# def save_new_user(data):
+#     user = User.query.filter_by(username=data['username']).first()
+#     # print(data)
+#     if not user:
+#         if 'email' in data:
+#             new_user = User(
+#                 public_id=str(uuid.uuid4()),
+#                 email=data['email'],
+#                 username=data['username'],
+#                 password=data['password'],
+#                 registered_on=datetime.datetime.utcnow(),
+#                 level = 1
+#             )
+#             save_changes(new_user)
+#             return generate_token(new_user)            
+#         else:
+#             new_user = User(
+#                 public_id=str(uuid.uuid4()),
+#                 email=None,
+#                 username=data['username'],
+#                 password=data['password'],
+#                 registered_on=datetime.datetime.utcnow(),
+#                 level = 1
+#             )
+#             save_changes(new_user)
+#             return generate_token(new_user)
+        
+#         # response_object = {
+#         #     'status': 'success',
+#         #     'message': 'Successfully registered.'
+#         # }
+#         # return response_object, 201
+
+#         # save_changes(new_user)
+#         # return generate_token(new_user)
+#     else:
+#         response_object = {
+#             'status': 'fail',
+#             'message': 'User already exists. Please Log in.',
+#         }
+#         return response_object, 409
 
 
 def get_all_users():
