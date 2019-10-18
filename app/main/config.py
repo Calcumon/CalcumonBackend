@@ -5,7 +5,9 @@ import psycopg2
 # uncomment the line below for postgres database url from environment variable
 # postgres_local_base = os.environ['DATABASE_URL']
 # postgres_local_base = env('LOCAL_DATA_BASE')
-postgres_local_base = env('PRODUCTION_DATA_BASE')
+# 
+# env('LOCAL_DATA_BASE')
+postgres_local_base = env('PRODUCTION_DATA_BASE') 
 
 # conn = psycopg2.connect(postgres_local_base, sslmode='require')
 # os.environ.get('LOCAL_DATA_BASE')
