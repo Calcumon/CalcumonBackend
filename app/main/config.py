@@ -7,7 +7,7 @@ import psycopg2
 # postgres_local_base = env('LOCAL_DATA_BASE')
 postgres_local_base = env('PRODUCTION_DATA_BASE')
 
-conn = psycopg2.connect(postgres_local_base, sslmode='require')
+# conn = psycopg2.connect(postgres_local_base, sslmode='require')
 # os.environ.get('LOCAL_DATA_BASE')
 # CAP Procfile
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -20,7 +20,7 @@ class Config:
 class DevelopmentConfig(Config):
     # uncomment the line below to use postgres
     # SQLALCHEMY_DATABASE_URI = postgres_local_base
-      SQLALCHEMY_DATABASE_URI = conn
+    SQLALCHEMY_DATABASE_URI = postgres_local_base
 
     DEBUG = True
     # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'flask_boilerplate_main.db')
@@ -39,7 +39,7 @@ class ProductionConfig(Config):
     DEBUG = False
     # uncomment the line below to use postgres
     # SQLALCHEMY_DATABASE_URI = postgres_local_base
-    SQLALCHEMY_DATABASE_URI = conn
+    SQLALCHEMY_DATABASE_URI = postgres_local_base
 
 
 
