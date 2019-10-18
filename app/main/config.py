@@ -1,9 +1,10 @@
 import os
 from envparse import env
-
 # uncomment the line below for postgres database url from environment variable
-postgres_local_base = env('DATABASE_URL')
-# postgres_local_base = 'postgresql://127.0.0.1:5432/calcumon_users'
+# postgres_local_base = os.environ['DATABASE_URL']
+# postgres_local_base = env('LOCAL_DATA_BASE')
+postgres_local_base = env('PRODUCTION_DATA_BASE')
+#os.environ.get('LOCAL_DATA_BASE')
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 

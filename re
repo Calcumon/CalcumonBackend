@@ -9,7 +9,6 @@ Flask==1.1.1
 Flask-Bcrypt==0.7.1
 flask-heroku==0.1.9
 Flask-Migrate==2.5.2
-Flask-PyMongo==2.3.0
 flask-restplus==0.13.0
 Flask-Script==2.0.6
 Flask-SQLAlchemy==2.4.1
@@ -25,10 +24,8 @@ more-itertools==7.2.0
 psycopg2-binary==2.8.3
 pycparser==2.19
 PyJWT==1.7.1
-pymongo==3.9.0
 pyrsistent==0.15.4
 python-dateutil==2.8.0
-python-dotenv==0.10.3
 python-editor==1.0.4
 pytz==2019.3
 six==1.12.0
