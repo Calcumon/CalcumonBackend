@@ -9,6 +9,8 @@
     To run test: make tests
 
     To run application: make run
+    
+    To update db (PostgreSQL): make db-update
 
 
 ### Viewing the app ###

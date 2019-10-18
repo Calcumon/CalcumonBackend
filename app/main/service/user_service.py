@@ -4,9 +4,13 @@ import datetime
 from app.main import db
 from app.main.model.user import User
 
+# import os
+
+# # postgres_local_base = os.environ.get('DATABASE_URL')
 
 def save_new_user(data):
     user = User.query.filter_by(username=data['username']).first()
+    # print(postgres_local_base)
     if not user:
       if 'email' in data:
             new_user = User(
