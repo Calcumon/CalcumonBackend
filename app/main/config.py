@@ -5,7 +5,7 @@ from envparse import env
 # postgres_local_base = env('LOCAL_DATA_BASE')
 postgres_local_base = env('PRODUCTION_DATA_BASE')
 #os.environ.get('LOCAL_DATA_BASE')
-
+# CAP Procfile
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
