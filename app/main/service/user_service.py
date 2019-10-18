@@ -7,6 +7,7 @@ from app.main.model.user import User
 
 def save_new_user(data):
     user = User.query.filter_by(username=data['username']).first()
+    # print(data)
     if not user:
         new_user = User(
             public_id=str(uuid.uuid4()),
