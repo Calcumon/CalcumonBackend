@@ -2,9 +2,9 @@ import os
 from envparse import env
 import psycopg2
 
-# postgres_local_base = env('LOCAL_DATA_BASE')
+postgres_local_base = env('LOCAL_DATA_BASE')
 
-postgres_local_base = env('PRODUCTION_DATA_BASE') 
+# postgres_local_base = env('PRODUCTION_DATA_BASE')
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
