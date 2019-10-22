@@ -11,7 +11,12 @@ from app.main import create_app, db
 from app.main.model import user
 from app.main.model import blacklist
 
-app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
+# print(os.getenv('BOILERPLATE_ENV'))
+app = create_app(os.getenv('FLASK_ENV'))
+# app.config.from_object('app.main.config.TestingConfig')
+
+# app = create_app('dev')
+
 app.register_blueprint(blueprint)
 
 app.app_context().push()

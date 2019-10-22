@@ -3,8 +3,7 @@ from envparse import env
 import psycopg2
 
 postgres_local_base = env('LOCAL_DATA_BASE')
-
-# postgres_local_base = env('PRODUCTION_DATA_BASE')
+postgres_prod_base = env('PRODUCTION_DATA_BASE')
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -35,7 +34,7 @@ class ProductionConfig(Config):
     DEBUG = False
     # uncomment the line below to use postgres
     # SQLALCHEMY_DATABASE_URI = postgres_local_base
-    SQLALCHEMY_DATABASE_URI = postgres_local_base
+    SQLALCHEMY_DATABASE_URI = postgres_prod_base
 
 
 
