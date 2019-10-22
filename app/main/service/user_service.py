@@ -14,7 +14,6 @@ def save_new_user(data):
     if not user:
       if 'email' in data:
             new_user = User(
-                # public_id=str(uuid.uuid4()),
                 public_id=data['username'],
                 email=data['email'],
                 username=data['username'],
@@ -26,7 +25,6 @@ def save_new_user(data):
             return generate_token(new_user)
       else:
             new_user = User(
-                # public_id=str(uuid.uuid4()),
                 public_id=data['username'],
                 email=None,
                 username=data['username'],
