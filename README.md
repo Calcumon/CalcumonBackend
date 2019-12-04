@@ -1,5 +1,14 @@
 #### FLASK RESTFUL API BOILER-PLATE WITH JWT
 
+###  To init project:
+
+    Start pip virtual env: virtualenv venv
+
+    Install pip requirememts: pip install -r requirements.txt (*note: make python-packages below also works)
+
+    Source virtual env: source venv/bin/activate
+ 
+
 ### Terminal commands
 
     To clean excess files: make clean
