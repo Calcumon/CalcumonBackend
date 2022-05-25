@@ -86,7 +86,7 @@ pycparser==2.19
 pydocstyle==2.1.1
 pyflakes==1.6.0
 Pygments==2.4.2
-PyJWT==1.7.1
+PyJWT==2.4.0
 pylint==2.3.1
 pyperclip==1.7.0
 pyrsistent==0.15.2
