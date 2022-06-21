@@ -23,7 +23,7 @@ jsonschema==3.1.1
 Mako==1.1.0
 MarkupSafe==1.1.1
 more-itertools==7.2.0
-numpy==1.17.2
+numpy==1.22.0
 psycopg2==2.8.3
 pycparser==2.19
 PyJWT==1.7.1
